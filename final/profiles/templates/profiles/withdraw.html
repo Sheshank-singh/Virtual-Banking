@@ -1,9 +1,9 @@
-<body>
-    {% extends 'base.html' %}
-    {% load static %}
-    
-    {% block stylecontent %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylecontent %}
     <style>
+        /* Custom styles to complement base.html styling */
         body {
             background-color: aliceblue;
         }
@@ -13,99 +13,123 @@
             font-weight: 900;
         }
         #page_name {
-            font-size: 25;
+            font-size: 25px;
+            font-weight: bold;
+            color: #3399ff;
         }
         
         #details_box {
-            font-size: 23;
-            top: 50px;
-            left: 30px;
+            font-size: 23px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
         }
         
         #details_table {
-            font-size: 20;
-            position: relative;
-            align-items: center;
-        }
-        
-        #edit_details {
-            top: 10px;
-            left: 20px;
+            font-size: 20px;
+            margin-top: 10px;
+            width: 100%;
         }
         
         #edit_button {
             border: none;
-            color: black;
-            padding: 5px 7px;
+            color: white;
+            background-color: #3399ff;
+            padding: 8px 12px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 14px;
-            margin: 2px 1px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        #edit_button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Style for the form inputs */
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #3399ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
             cursor: pointer;
         }
+        
+        button:hover {
+            background-color: #287bb5;
+        }
     </style>
+{% endblock %}
 
-    {%endblock%}
-    
-    {% block bodycontent %}
-    <table width=70% height=60%>
-        <tr>
-            <td>
-                <div id="page_name" style="float:left;">
-                    <font color="#3399ff">Withdraw</font>
+{% block bodycontent %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="page_name">
+                    Withdraw
                 </div>
-            </td>
-            <td>
-                <div id="edit_details" style="float:right;">
-                    <button type="button" id="edit_button"><a href="{% url 'profiles:dashboard' %}">Home</a></button>
+                <div id="edit_details" style="float: right;">
+                    <button type="button" id="edit_button">
+                        <a href="{% url 'profiles:dashboard' %}">Home</a>
+                    </button>
                 </div>
-                
-            </td>
-            
-        </tr>
-        <tr>
-            <td></td>
+            </div>
+        </div>
 
-            <td>
-
+        <div class="row">
+            <div class="col-md-12">
                 <div id="details_box">
                     <form name="withdraw_details" action="withdraw" method="POST">
-                        <table id="details_table" cellpadding=5px;>
+                        {% csrf_token %}
+                        <table id="details_table" cellpadding="5">
                             {% if accounts %}
-                            {% csrf_token %}
-                            <tr>
-                                <td>Amount to be withdrawn :</td>
-                                <td><input type="text" name="amount" placeholder="Amount"></td>
-                            </tr>
-                            <tr>
-                                <td> Withdraw from account :</td>
-                                <td><input type="text" name="acc_no" placeholder="Account number"></td>
-                            </tr>
-
-                            <tr>
-                                <td></td>
-                                <!--<td><input type="button" value="Withdraw"></td>-->
-                                <td><button>Withdraw</button></td>
-                            </tr>
+                                <tr>
+                                    <td>Amount to be withdrawn:</td>
+                                    <td><input type="text" name="amount" placeholder="Amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw from account:</td>
+                                    <td><input type="text" name="acc_no" placeholder="Account number"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button type="submit">Withdraw</button></td>
+                                </tr>
                             {% else %}
-                                <tr> <td> New Customer. No accounts yet. </td></tr>
+                                <tr>
+                                    <td colspan="2">New Customer. No accounts yet.</td>
+                                </tr>
                             {% endif %}
                             <tr>
-                                <td><span>{{msg|safe}}</span></td>
+                                <td colspan="2">
+                                    <span>{{ msg|safe }}</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td> <small>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of amount transfer</small>. <br></td>
+                                <td colspan="2">
+                                    <small>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of amount transfer.</small>
+                                </td>
                             </tr>
                         </table>
                     </form>
-                    
-                   
-                    
                 </div>
-            </td>
-        </tr>
-    </table>
-    {% endblock%}
-</body>
-
+            </div>
+        </div>
+    </div>
+{% endblock %}

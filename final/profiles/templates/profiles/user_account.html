@@ -6,157 +6,149 @@
     <style>
         body {
             background-color: aliceblue;
+            font-family: Arial, sans-serif; /* Set a consistent font */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
-        h2 {
-            font-family: 'Slabo 27px';
-            border-bottom: 1px solid black;
-            font-weight: 900;
+
+        h4 {
+            font-size: 24px; /* Consistent font size for headings */
+            margin: 10px 0; /* Add margin for spacing */
+            color: #3399ff; /* Consistent color for headings */
         }
+
         #page_name {
-            font-size: 25;
+            font-size: 25px; /* Use pixels for size consistency */
+            color: #3399ff; /* Use the same color */
+            font-weight: bold; /* Ensure headings are bold */
         }
         
         #details_box {
-            font-size: 23;
-            top: 50px;
-            left: 30px;
+            font-size: 20px; /* Consistent font size */
+            padding: 15px; /* Add padding for better spacing */
+            background-color: #ffffff; /* Background for details box */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
         
         #details_table {
-            font-size: 20;
-            position: relative;
-            align-items: center;
+            font-size: 18px; /* Smaller font size for table content */
+            width: 100%; /* Ensure the table uses full width */
+            border-collapse: collapse; /* Merge table borders */
         }
         
-    #buttons_table {
-        font-size: 25;
-        border: 1px solid black;
-        border-radius: 10px;
-        align-items: center;
-    }
+        #buttons_table {
+            font-size: 20px; /* Consistent font size */
+            border-collapse: collapse; /* Merge table borders */
+            width: 100%; /* Ensure buttons table uses full width */
+        }
 
-    #buttons_box {
-        margin-left: 40;
-        padding-left: 20%;
-        padding-top: 10%;
-        padding-bottom: 10%;
-        position: relative;
-    }
+        #buttons_box {
+            padding: 10px; /* Add padding for the button box */
+        }
 
-    #buttons {
-        border: none;
-        color: black;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        background-color: #33adff;
-        height: 40px;
-        width: 250px;
-    }
+        #buttons {
+            border: none;
+            color: white; /* Ensure text color is white for contrast */
+            padding: 10px 15px; /* Consistent padding for buttons */
+            text-align: center;
+            display: inline-block;
+            font-size: 18px; /* Consistent button font size */
+            margin: 10px 0; /* Margin between buttons */
+            cursor: pointer;
+            background-color: #33adff; /* Consistent button color */
+            border-radius: 5px; /* Rounded button corners */
+            transition: background-color 0.3s; /* Smooth transition */
+            width: 100%; /* Full width buttons */
+            max-width: 250px; /* Max width for buttons */
+        }
 
-    #buttons:hover {
-        background-color: #D0D0D0;
-    }
-
+        #buttons:hover {
+            background-color: #007acc; /* Darker shade on hover */
+        }
         
-    #edit_details {
-        top: 10px;
-        left: 20px;
-    }
-       
-    #edit_button {
-        border: none;
-        color: black;
-        padding: 5px 7px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-        margin: 2px 1px;
-        cursor: pointer;
-    }
-    </style>
+        #edit_details {
+            position: relative; /* Maintain original position */
+            top: 10px; /* Positioning as required */
+            left: 20px; /* Positioning as required */
+        }
+        
+        #edit_button {
+            border: none;
+            background-color: #f0f0f0; /* Light background for edit button */
+            color: black;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners for edit button */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
 
-    {%endblock%}
+        #edit_button:hover {
+            background-color: #d0d0d0; /* Change on hover */
+        }
+    </style>
+    {% endblock %}
     
     {% block bodycontent %}
-        <table width=70% height=60%>
+        <table width="70%" height="60%">
             <tr>
                 <td>
-
                     <div id="page_name" style="float:left;">
-                        <font color="#3399ff">User Account</font>
+                        User Account
                     </div>
                 </td>
                 <td>
                     <div id="edit_details" style="float:right;">
-                        <button type="button" id="edit_button"><a href="{% url 'profiles:dashboard' %}">Home</a></button>
+                        <button type="button" id="edit_button"><a href="{% url 'profiles:dashboard' %}" style="text-decoration: none; color: inherit;">Home</a></button>
                     </div>
                 </td>
             </tr>
-
-
-
             <tr>
                 <td>
                     <div id="details_box" align="center">
-                        <h4>User Details: </h4>
-                        <table id="details_table" cellpadding=5px;>
+                        <h4>User Details:</h4>
+                        <table id="details_table" cellpadding="5">
                             <tr>
-                                <td>User Name : {{ customer.customer_data.Name }} </td>
+                                <td>User Name: {{ customer.customer_data.Name }}</td>
                                 <td id="name"></td>
                             </tr>
-                            <!--
-                            <tr id="accname">
-                                <td>Phone no.: {{customer.Name}}</td>
-                                <td id="acc_name"></td>
-                            </tr>
-                            -->
-
-
                         </table>
                     </div>
                 </td>
                 <td>
-                <form name="dashboard" action="redirect_from_dashboard">
-                    <input type="hidden" name="function_chosen" id="function_chosen">
-                    <div id="buttons_box">
-                        <table id="buttons_table" cellpadding=5px;>
-
-                            <tr>
-                                <td><button id="buttons" class="button" onclick="set_function_chosen('view_accounts')">View Accounts</button></td>
-                            </tr>
-                            <!-- tr>
-                                <td><button id="buttons" onclick="set_function_chosen('money_transfer')"> Money Transfer</button></td>
-                            </tr -->
-                            <tr>
-                                <td><button  id="buttons" onclick="set_function_chosen('start_ecs')">  Start ECS   </button></td>
-                            </tr>
-                            <tr>
-                                <td><button  id="buttons" onclick="set_function_chosen('withdraw')">   Withdraw   </button></td>
-                            </tr>
-                            <tr>
-                                <td><button  id="buttons" onclick="set_function_chosen('deposit')">   Deposit    </button></td>
-                            </tr>
-                            <tr>
-                                <td><button  id="buttons" onclick="set_function_chosen('stat_gen')">  Statement Generation   </button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </form>
+                    <form name="dashboard" action="redirect_from_dashboard">
+                        <input type="hidden" name="function_chosen" id="function_chosen">
+                        <div id="buttons_box">
+                            <table id="buttons_table" cellpadding="5">
+                                <tr>
+                                    <td><button id="buttons" onclick="set_function_chosen('view_accounts')">View Accounts</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button id="buttons" onclick="set_function_chosen('withdraw')">Withdraw</button></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><button id="buttons" onclick="set_function_chosen('deposit')">Deposit</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button id="buttons" onclick="set_function_chosen('stat_gen')">Statement Generation</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
                 </td>
             </tr>
         </table>
         
         <script>
-        function set_function_chosen(menu_name){
-            hidden_field = document.getElementById("function_chosen");
-            hidden_field.setAttribute("value", menu_name);
-        }
+            function set_function_chosen(menu_name) {
+                var hidden_field = document.getElementById("function_chosen");
+                hidden_field.setAttribute("value", menu_name);
+            }
         </script>
-    {% endblock%}
+    {% endblock %}
 </body>

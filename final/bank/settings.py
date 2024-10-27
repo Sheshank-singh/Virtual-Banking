@@ -84,7 +84,7 @@ DATABASES = {
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'Bank_DB',
         'USER':'root',
-        'PASSWORD': '*****',
+        'PASSWORD': 'Mysql@2609',
         'HOST':'localhost',
         'PORT':'3306',
         'TIME_ZONE': 'Asia/Kolkata'

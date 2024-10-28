@@ -20,18 +20,29 @@ The Online Bank System has the following functionalities :
   1. Django 3.x
   2. Mysql
 
-## Steps to execute the code : 
+## Steps to execute the code :
 
-### Step 1 : 
 
-python manage.py runserver 
+### 1. Set up the database
+
+Change the password of the database in final/bank/settings.py which you have used for mysql
+
+--Use the command to create the database
+
+>> mysql -u root -p
+>> Enter the password
+>> create database Bank_DB;
+
+### 2. Create the migration for the database
+
+ >>python manage.py makemigrations
+ >>python manage.py migrate
+
+### 3. Run the Project
+
+>>python manage.py runserver
 
 ( This will start the webapp in localhost )
-
-### Step 2 : Change mySQL root password 
-
-file path : final/bank/settings.py
-
 
 
 

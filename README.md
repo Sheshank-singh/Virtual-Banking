@@ -29,18 +29,18 @@ Change the password of the database in final/bank/settings.py which you have use
 
 --Use the command to create the database
 
->> mysql -u root -p
->> Enter the password
->> create database Bank_DB;
+>> mysql -u root -p <br>
+>> Enter the password  <br>
+>> create database Bank_DB; <br>
 
 ### 2. Create the migration for the database
 
- >>python manage.py makemigrations
- >>python manage.py migrate
+ >>python manage.py makemigrations  <br>
+ >>python manage.py migrate  <br>
 
 ### 3. Run the Project
 
->>python manage.py runserver
+>>python manage.py runserver <br>
 
 ( This will start the webapp in localhost )
 

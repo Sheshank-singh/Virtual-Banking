@@ -16,9 +16,19 @@ The Online Bank System has the following functionalities :
        based on specified criteria (credit transactions, debit transactions over the given period)
 
 
-Technologies used : 
+## Technologies used : 
   1. Django 3.x
   2. Mysql
+
+## Steps to execute the code : 
+
+### Step 1 : 
+
+python manage.py runserver 
+
+( This will start the webapp in localhost )
+
+
 
 
 

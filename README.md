@@ -28,7 +28,9 @@ python manage.py runserver
 
 ( This will start the webapp in localhost )
 
+### Step 2 : Change mySQL root password 
 
+file path : final/bank/settings.py
 
 
 
